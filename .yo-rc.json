@@ -1,0 +1,21 @@
+{
+  "generator-jhipster": {
+    "baseName": "FantasyLeague",
+    "packageName": "fantasyleague",
+    "packageFolder": "fantasyleague",
+    "authenticationType": "oauth2",
+    "hibernateCache": "ehcache",
+    "clusteredHttpSession": "no",
+    "websocket": "spring-websocket",
+    "databaseType": "sql",
+    "devDatabaseType": "h2Memory",
+    "prodDatabaseType": "mysql",
+    "searchEngine": "no",
+    "useCompass": false,
+    "buildTool": "maven",
+    "frontendBuilder": "grunt",
+    "javaVersion": "8",
+    "enableTranslation": false,
+    "rememberMeKey": "368eec2fb089f36a403b2e08c37c4faac7c52c90"
+  }
+}
