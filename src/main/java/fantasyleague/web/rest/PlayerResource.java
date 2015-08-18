@@ -76,11 +76,16 @@ public class PlayerResource {
             produces = MediaType.APPLICATION_JSON_VALUE)
     @Timed
     public ResponseEntity<List<Player>> getAll(@RequestParam(value = "page" , required = false) Integer offset,
-                                  @RequestParam(value = "per_page", required = false) Integer limit)
-        throws URISyntaxException {
-        Page<Player> page = playerRepository.findAll(PaginationUtil.generatePageRequest(offset, limit));
-        HttpHeaders headers = PaginationUtil.generatePaginationHttpHeaders(page, "/api/players", offset, limit);
-        return new ResponseEntity<>(page.getContent(), headers, HttpStatus.OK);
+                                  @RequestParam(value = "per_page", required = false) Integer limit) throws URISyntaxException {
+    	
+    	if (offset != null) {
+    		Page<Player> page = playerRepository.findAll(PaginationUtil.generatePageRequest(offset, limit));
+    		HttpHeaders headers = PaginationUtil.generatePaginationHttpHeaders(page, "/api/players", offset, limit);
+    		return new ResponseEntity<>(page.getContent(), headers, HttpStatus.OK);
+    	} else {
+    		List<Player> players = playerRepository.findAll();
+    		return new ResponseEntity<List<Player>>(players, HttpStatus.OK);
+    	}
     }
 
     /**
