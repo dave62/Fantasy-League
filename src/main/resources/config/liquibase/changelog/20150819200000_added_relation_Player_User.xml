@@ -15,30 +15,19 @@
     <property name="floatType" value="float" dbms="mysql, oracle"/>
 
     <!--
-        Added Player and club data
+        Added Player and User relationship
     -->
-    <changeSet id="20150816223700" author="dave">
+    <changeSet id="20150819200000" author="dave">
         
-		<loadData encoding="UTF-8"
-                  file="config/liquibase/clubs.csv"
-                  separator=";"
-                  tableName="CLUB"/>
-        
+		<addColumn tableName="player">
+			<column name="owner_id" type="bigint"/>
+		</addColumn>
 		
-		<loadData encoding="UTF-8"
-                  file="config/liquibase/psg.csv"
-                  separator=";"
-                  tableName="PLAYER"/>
-				  
-		<loadData encoding="UTF-8"
-                  file="config/liquibase/ol.csv"
-                  separator=";"
-                  tableName="PLAYER"/>
-				  
-		<loadData encoding="UTF-8"
-                  file="config/liquibase/asm.csv"
-                  separator=";"
-                  tableName="PLAYER"/>
-
+		 <addForeignKeyConstraint baseColumnNames="owner_id"
+                                 baseTableName="PLAYER"
+                                 constraintName="fk_player_owner_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="JHI_USER"/>
+		
     </changeSet>
 </databaseChangeLog>

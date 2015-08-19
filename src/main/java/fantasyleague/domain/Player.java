@@ -22,18 +22,17 @@ public class Player implements Serializable {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
 
-
-    
     @Column(name = "name")
     private String name;
 
-
-    
     @Column(name = "position")
     private String position;
 
     @ManyToOne
     private Club club;
+    
+    @ManyToOne
+    private User owner;
 
     public Long getId() {
         return id;
@@ -66,8 +65,16 @@ public class Player implements Serializable {
     public void setClub(Club club) {
         this.club = club;
     }
+    
+    public User getOwner() {
+		return owner;
+	}
 
-    @Override
+	public void setOwner(User owner) {
+		this.owner = owner;
+	}
+
+	@Override
     public boolean equals(Object o) {
         if (this == o) {
             return true;

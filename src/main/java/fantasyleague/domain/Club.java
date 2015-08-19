@@ -31,7 +31,7 @@ public class Club implements Serializable {
     @OneToMany(mappedBy = "club")
     @JsonIgnore
     @Cache(usage = CacheConcurrencyStrategy.NONSTRICT_READ_WRITE)
-    private Set<Player> playerss = new HashSet<>();
+    private Set<Player> players = new HashSet<>();
 
     public Long getId() {
         return id;
@@ -49,12 +49,12 @@ public class Club implements Serializable {
         this.name = name;
     }
 
-    public Set<Player> getPlayerss() {
-        return playerss;
+    public Set<Player> getPlayers() {
+        return players;
     }
 
-    public void setPlayerss(Set<Player> players) {
-        this.playerss = players;
+    public void setPlayers(Set<Player> players) {
+        this.players = players;
     }
 
     @Override
