@@ -53,8 +53,8 @@
 						<td>{{item.name}}</td>
 						<td>{{item.club.name}}</td>
 						<td>
-							<button type="submit" class="btn btn-primary btn-sm">
-								<span class=" glyphicon glyphicon-ok-circle"></span>&nbsp;<span> Select</span>
+							<button type="submit" class="btn btn-primary btn-sm" ng-click="selectItem($index)">
+								<span class=" glyphicon glyphicon-ok-circle" ></span>&nbsp;<span> Select</span>
 							</button>
 						</td>
 					</tr>
@@ -68,34 +68,17 @@
 		</div>
         <div class="col-md-4">
 		    <div class="list-group">
-	            <span class="list-group-item disabled"> <label class="tree-toggler nav-header">Goalkeeper</label> <span class="badge">3</span> </span>
-	            <span class="list-group-item"> Lastname Name</span>
-	            <span class="list-group-item"> Lastname Name</span>
-	            <span class="list-group-item"> Lastname Name</span>
+	            <span class="list-group-item disabled"> <label class="tree-toggler nav-header">Goalkeeper</label> <span class="badge">{{selectedGK.length}}</span> </span>
+	            <span class="list-group-item" ng-repeat="player in selectedGK">{{player.name}}</span>
 	            
-	            <span class="list-group-item disabled"> <label class="tree-toggler nav-header">Defender</label> <span class="badge">6</span> </span>
-	            <span class="list-group-item"> Lastname Name</span>
-	            <span class="list-group-item"> Lastname Name</span>
-	            <span class="list-group-item"> Lastname Name</span>
-	            <span class="list-group-item"> Lastname Name</span>
-	            <span class="list-group-item"> Lastname Name</span>
-	            <span class="list-group-item"> Lastname Name</span>
+	            <span class="list-group-item disabled"> <label class="tree-toggler nav-header">Defender</label> <span class="badge">{{selectedDef.length}}</span> </span>
+	            <span class="list-group-item" ng-repeat="player in selectedDef">{{player.name}}</span>
 	            
-	            <span class="list-group-item disabled"> <label class="tree-toggler nav-header">Midfielder</label> <span class="badge">6</span> </span>
-	            <span class="list-group-item"> Lastname Name</span>
-	            <span class="list-group-item"> Lastname Name</span>
-	            <span class="list-group-item"> Lastname Name</span>
-	            <span class="list-group-item"> Lastname Name</span>
-	            <span class="list-group-item"> Lastname Name</span>
-	            <span class="list-group-item"> Lastname Name</span>
+	            <span class="list-group-item disabled"> <label class="tree-toggler nav-header">Midfielder</label> <span class="badge">{{selectedMid.length}}</span> </span>
+	            <span class="list-group-item" ng-repeat="player in selectedMid">{{player.name}}</span>
 	            
-	            <span class="list-group-item disabled"> <label class="tree-toggler nav-header">Forward</label> <span class="badge">4</span> </span>
-	            <span class="list-group-item"> Lastname Name</span>
-	            <span class="list-group-item"> Lastname Name</span>
-	            <span class="list-group-item"> Lastname Name</span>
-	            <span class="list-group-item"> Lastname Name</span>
-	            
-	            
+	            <span class="list-group-item disabled"> <label class="tree-toggler nav-header">Forward</label> <span class="badge">{{selectedFwd.length}}</span> </span>
+	            <span class="list-group-item" ng-repeat="player in selectedFwd">{{player.name}}</span>
 		    </div>
 		</div>
 		

@@ -3,8 +3,6 @@
 angular.module('fantasyleagueApp')
     .controller('DraftController', function ($scope, $filter, Player, ParseLinks) {
     	
-        //New
-        // init
         $scope.sortingOrder = 'name';
         $scope.pageSizes = [5,10,25,50];
         $scope.reverse = false;
@@ -14,6 +12,11 @@ angular.module('fantasyleagueApp')
         $scope.pagedItems = [];
         $scope.currentPage = 0;
         $scope.items = [];
+        
+        $scope.selectedGK = [];
+        $scope.selectedDef = [];
+        $scope.selectedMid = [];
+        $scope.selectedFwd = [];
         
         $scope.loadAll = function() {
         	Player.query({}, function(result, headers) {
@@ -42,7 +45,6 @@ angular.module('fantasyleagueApp')
           if ($scope.sortingOrder !== '') {
             $scope.filteredItems = $filter('orderBy')($scope.filteredItems, $scope.sortingOrder, $scope.reverse);
           }
-          $scope.currentPage = 0;
           // now group by pages
           $scope.groupToPages();
         };
@@ -93,15 +95,43 @@ angular.module('fantasyleagueApp')
           $scope.currentPage = this.n;
         };
         
-        // functions have been describe process the data for display
-        
-        // change sorting order
         $scope.sort_by = function(newSortingOrder) {
           if ($scope.sortingOrder == newSortingOrder)
             $scope.reverse = !$scope.reverse;
           
           $scope.sortingOrder = newSortingOrder;
         };
+        
+        $scope.selectItem = function (idx) {
+        	//getting the selected object
+            var itemToSelect = $scope.pagedItems[$scope.currentPage][idx];
+            
+            //adding them to the right array
+            switch (itemToSelect.position) {
+			case 'G':
+				$scope.selectedGK.push(itemToSelect);
+				break;
+			case 'D':
+				$scope.selectedDef.push(itemToSelect);
+				break;
+			case 'M':
+				$scope.selectedMid.push(itemToSelect);
+				break;
+			case 'A':
+				$scope.selectedFwd.push(itemToSelect);
+				break;
+			default:
+				break;
+			}
+            
+            //then delete it from the main list
+            var idxInItems = $scope.items.indexOf(itemToSelect);
+            $scope.items.splice(idxInItems,1);
+            $scope.search();
+            
+            return false;
+        };
+        
         
         
         $scope.loadAll();
