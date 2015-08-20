@@ -20,4 +20,20 @@ angular.module('fantasyleagueApp')
                 }
             })
             ;
-    });
+    }).directive('toggle', function() {
+    	  return function(scope, element, attrs) {
+    		    var clickingCallback = function() {
+    		    	var $content = $(element).next();
+    	    	    //open up the content needed - toggle the slide- if visible, slide up, if not slidedown.
+    	    	    $content.slideToggle(300, function () {
+    	    	    });
+    		    };
+    		    element.bind('click', clickingCallback);
+    		  }
+    		});
+    
+    
+
+
+
+

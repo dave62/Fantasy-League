@@ -178,3 +178,9 @@ ul#strengthBar {
     background-color: #eee;
     opacity: 1;
 }
+
+.list-header {
+  color: #777;
+  cursor: pointer;
+  background-color: #eee;
+}
