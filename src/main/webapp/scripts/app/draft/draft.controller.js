@@ -18,6 +18,8 @@ angular.module('fantasyleagueApp')
         $scope.selectedMid = [];
         $scope.selectedFwd = [];
         
+        $scope.messages = [];
+        
         $scope.loadAll = function() {
         	Player.query({}, function(result, headers) {
                 $scope.items = result;
@@ -131,6 +133,17 @@ angular.module('fantasyleagueApp')
             
             return false;
         };
+        
+        $scope.sendMessage = function () {
+        	if ($scope.currentMessage !== "") {
+	        	var newMessage = {content:$scope.currentMessage, date:new Date(), author:"Author"}; 
+	        	$scope.messages.push(newMessage);
+	        	$scope.currentMessage = "";
+	        	$('.panel-body').stop().animate({
+        		  scrollTop: $(".panel-body")[0].scrollHeight
+        		}, 800);
+        	}
+        }
         
         
         

@@ -107,48 +107,21 @@
 							</div>
 							<div class="panel-body">
 								<div class="chat">
-										<div class="chat-body clearfix">
-											<div class="header">
-												<strong class="primary-font">User1</strong> 
-												<small class="pull-right text-muted"> <span class="glyphicon glyphicon-time"></span> 21/08/2015 15:31 </small>
-											</div>
-											<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. </p>
+									<div class="chat-body clearfix" ng-repeat="msg in messages">
+										<div class="header">
+											<strong class="primary-font">{{msg.author}}</strong> 
+											<small class="pull-right text-muted"> <span class="glyphicon glyphicon-time"></span> {{msg.date | date :'dd/MM/yy HH:mm'}} </small>
 										</div>
-										<div class="chat-body clearfix">
-											<div class="header">
-												<strong class="primary-font">User2</strong> 
-												<small class="pull-right text-muted"> <span class="glyphicon glyphicon-time"></span> 21/08/2015 15:33 </small>
-											</div>
-											<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur bibendum ornare dolor, quis ullamcorper ligula sodales.</p>
-										</div>
-										<div class="chat-body clearfix">
-											<div class="header">
-												<strong class="primary-font">User3</strong> 
-												<small class="pull-right text-muted"> <span class="glyphicon glyphicon-time"></span> 21/08/2015 15:35 </small>
-											</div>
-											<p> Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur bibendum ornare dolor, quis ullamcorper ligula sodales.</p>
-										</div>
-										<div class="chat-body clearfix">
-											<div class="header">
-												<strong class="primary-font">User1</strong> 
-												<small class="pull-right text-muted"> <span class="glyphicon glyphicon-time"></span> 21/08/2015 15:38 </small>
-											</div>
-											<p> Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur bibendum ornare dolor, quis ullamcorper ligula sodales.</p>
-										</div>
-										<div class="chat-body clearfix">
-											<div class="header">
-												<strong class="primary-font">User1</strong> 
-												<small class="pull-right text-muted"> <span class="glyphicon glyphicon-time"></span> 21/08/2015 15:38 </small>
-											</div>
-											<p> Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur bibendum ornare dolor, quis ullamcorper ligula sodales.</p>
-										</div>
+										<p>{{msg.content}}</p>
+									</div>
 								</div>
 							</div>
 							<div class="panel-footer">
 								<div class="input-group">
-									<input id="btn-input" type="text" class="form-control input-sm" placeholder="Type your message here..." /> <span
-										class="input-group-btn">
-										<button class="btn btn-primary btn-sm" id="btn-chat">Send</button>
+									<input id="btn-input" type="text" class="form-control input-sm" placeholder="Type your message here..." maxlength="250"
+									ng-keydown="$event.which === 13 && sendMessage()" ng-model="currentMessage" /> 
+									<span class="input-group-btn">
+										<button class="btn btn-primary btn-sm" id="btn-chat" ng-click="sendMessage()" >Send</button>
 									</span>
 								</div>
 							</div>
