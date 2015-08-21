@@ -1,8 +1,8 @@
 <div>
 
-    <h2>Draft</h2>
-    <div class="row">
-    	<div class="col-md-8">
+	<h2>Draft</h2>
+	<div class="row">
+		<div class="col-md-8">
 
 			<div class="row">
 				<div class="col-md-3">
@@ -23,73 +23,143 @@
 			</div>
 			<hr>
 			<div>
-			<table class="table table-striped table-hover">
-				<tbody>
-					<tr>
-						<th><a ng-click="sort_by('position')">Position <i class="fa fa-sort"></i></a></th>
-						<th><a ng-click="sort_by('name')">Name <i class="fa fa-sort"></i></a></th>
-						<th><a ng-click="sort_by('club.name')">Club <i class="fa fa-sort"></i></a></th>
-						<th></th>
-					</tr>
-				</tbody>
-				<tfoot>
-					<tr>
-						<td colspan="9">{{sizes}}
-							<div class="text-center">
-								<ul class="pagination">
-									<li ng-class="{disabled: currentPage == 0}"><a href="javascript:;" ng-click="prevPage()">Prev</a></li>
-									<li ng-repeat="n in range(pagedItems.length)" ng-class="{active: n == currentPage}" ng-click="setPage()">
-										<a href="javascript:;" ng-bind="n + 1">1</a>
-									</li>
-									<li ng-class="{disabled: currentPage == pagedItems.length - 1}"><a href="javascript:;"ng-click="nextPage()">Next</a></li>
-								</ul>
-							</div>
-						</td>
-					</tr>
-				</tfoot>
-				<tbody>
-					<tr ng-repeat="item in pagedItems[currentPage] | orderBy:sortingOrder:reverse">
-						<td>{{item.position}}</td>
-						<td>{{item.name}}</td>
-						<td>{{item.club.name}}</td>
-						<td>
-							<button type="submit" class="btn btn-primary btn-sm" ng-click="selectItem($index)">
-								<span class=" glyphicon glyphicon-ok-circle" ></span>&nbsp;<span> Select</span>
-							</button>
-						</td>
-					</tr>
-				</tbody>
-			</table>
+				<table class="table table-striped table-hover">
+					<tbody>
+						<tr>
+							<th><a ng-click="sort_by('position')">Position <i class="fa fa-sort"></i></a></th>
+							<th><a ng-click="sort_by('name')">Name <i class="fa fa-sort"></i></a></th>
+							<th><a ng-click="sort_by('club.name')">Club <i class="fa fa-sort"></i></a></th>
+							<th></th>
+						</tr>
+					</tbody>
+					<tfoot>
+						<tr>
+							<td colspan="9">{{sizes}}
+								<div class="text-center">
+									<ul class="pagination">
+										<li ng-class="{disabled: currentPage == 0}"><a href="javascript:;" ng-click="prevPage()">Prev</a></li>
+										<li ng-repeat="n in range(pagedItems.length)" ng-class="{active: n == currentPage}" ng-click="setPage()">
+											<a href="javascript:;" ng-bind="n + 1">1</a>
+										</li>
+										<li ng-class="{disabled: currentPage == pagedItems.length - 1}"><a href="javascript:;"
+											ng-click="nextPage()">Next</a></li>
+									</ul>
+								</div>
+							</td>
+						</tr>
+					</tfoot>
+					<tbody>
+						<tr ng-repeat="item in pagedItems[currentPage] | orderBy:sortingOrder:reverse">
+							<td>{{item.position}}</td>
+							<td>{{item.name}}</td>
+							<td>{{item.club.name}}</td>
+							<td>
+								<button type="submit" class="btn btn-primary btn-sm" ng-click="selectItem($index)">
+									<span class=" glyphicon glyphicon-ok-circle"></span>&nbsp;<span> Select</span>
+								</button>
+							</td>
+						</tr>
+					</tbody>
+				</table>
 			</div>
 
 
 
 
 		</div>
-        <div class="col-md-4">
-		    <div class="list-group">
-	            <span class="list-group-item list-header" toggle> <label class="tree-toggler nav-header">Goalkeeper</label> <span class="badge">{{selectedGK.length}}</span> </span>
-	            <div>
-	            	<span class="list-group-item" ng-repeat="player in selectedGK">{{player.name}}</span>
-	            </div>
-	            
-	            <span class="list-group-item list-header" toggle> <label class="tree-toggler nav-header">Defender</label> <span class="badge">{{selectedDef.length}}</span> </span>
-	            <div>
-	            	<span class="list-group-item" ng-repeat="player in selectedDef">{{player.name}}</span>
-	            </div>
-	            
-	            <span class="list-group-item list-header" toggle> <label class="tree-toggler nav-header">Midfielder</label> <span class="badge">{{selectedMid.length}}</span> </span>
-	            <div>
-	            	<span class="list-group-item" ng-repeat="player in selectedMid">{{player.name}}</span>
-	            </div>
-	            
-	            <span class="list-group-item list-header" toggle> <label class="tree-toggler nav-header">Forward</label> <span class="badge">{{selectedFwd.length}}</span> </span>
-	            <div>
-	            	<span class="list-group-item" ng-repeat="player in selectedFwd">{{player.name}}</span>
-	            </div>
-		    </div>
+		<div class="col-md-4">
+			<div class="list-group">
+				<span class="list-group-item list-header" toggle> <label class="tree-toggler nav-header">Goalkeeper</label> <span
+					class="badge">{{selectedGK.length}}</span>
+				</span>
+				<div>
+					<span class="list-group-item" ng-repeat="player in selectedGK">{{player.name}}</span>
+				</div>
+
+				<span class="list-group-item list-header" toggle> <label class="tree-toggler nav-header">Defender</label> <span
+					class="badge">{{selectedDef.length}}</span>
+				</span>
+				<div>
+					<span class="list-group-item" ng-repeat="player in selectedDef">{{player.name}}</span>
+				</div>
+
+				<span class="list-group-item list-header" toggle> <label class="tree-toggler nav-header">Midfielder</label> <span
+					class="badge">{{selectedMid.length}}</span>
+				</span>
+				<div>
+					<span class="list-group-item" ng-repeat="player in selectedMid">{{player.name}}</span>
+				</div>
+
+				<span class="list-group-item list-header" toggle> <label class="tree-toggler nav-header">Forward</label> <span
+					class="badge">{{selectedFwd.length}}</span>
+				</span>
+				<div>
+					<span class="list-group-item" ng-repeat="player in selectedFwd">{{player.name}}</span>
+				</div>
+			</div>
+
+			<div class=".container-fluid chatContainer">
+				<div class="row">
+					<div>
+						<div class="panel panel-primary">
+							<div class="panel-heading">
+								<span class="glyphicon glyphicon-comment"></span> Chat
+							</div>
+							<div class="panel-body">
+								<div class="chat">
+										<div class="chat-body clearfix">
+											<div class="header">
+												<strong class="primary-font">User1</strong> 
+												<small class="pull-right text-muted"> <span class="glyphicon glyphicon-time"></span> 21/08/2015 15:31 </small>
+											</div>
+											<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. </p>
+										</div>
+										<div class="chat-body clearfix">
+											<div class="header">
+												<strong class="primary-font">User2</strong> 
+												<small class="pull-right text-muted"> <span class="glyphicon glyphicon-time"></span> 21/08/2015 15:33 </small>
+											</div>
+											<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur bibendum ornare dolor, quis ullamcorper ligula sodales.</p>
+										</div>
+										<div class="chat-body clearfix">
+											<div class="header">
+												<strong class="primary-font">User3</strong> 
+												<small class="pull-right text-muted"> <span class="glyphicon glyphicon-time"></span> 21/08/2015 15:35 </small>
+											</div>
+											<p> Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur bibendum ornare dolor, quis ullamcorper ligula sodales.</p>
+										</div>
+										<div class="chat-body clearfix">
+											<div class="header">
+												<strong class="primary-font">User1</strong> 
+												<small class="pull-right text-muted"> <span class="glyphicon glyphicon-time"></span> 21/08/2015 15:38 </small>
+											</div>
+											<p> Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur bibendum ornare dolor, quis ullamcorper ligula sodales.</p>
+										</div>
+										<div class="chat-body clearfix">
+											<div class="header">
+												<strong class="primary-font">User1</strong> 
+												<small class="pull-right text-muted"> <span class="glyphicon glyphicon-time"></span> 21/08/2015 15:38 </small>
+											</div>
+											<p> Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur bibendum ornare dolor, quis ullamcorper ligula sodales.</p>
+										</div>
+								</div>
+							</div>
+							<div class="panel-footer">
+								<div class="input-group">
+									<input id="btn-input" type="text" class="form-control input-sm" placeholder="Type your message here..." /> <span
+										class="input-group-btn">
+										<button class="btn btn-primary btn-sm" id="btn-chat">Send</button>
+									</span>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+
+
 		</div>
-		
-		
-    </div>
+
+
+	</div>
 </div>

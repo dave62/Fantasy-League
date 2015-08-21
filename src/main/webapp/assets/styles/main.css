@@ -184,3 +184,16 @@ ul#strengthBar {
   cursor: pointer;
   background-color: #eee;
 }
+
+.panel-body
+{
+    overflow-y: scroll;
+    height: 250px;
+}
+
+.chatContainer {
+	padding: 0px 15px 0px 15px;
+}
+
+
+
