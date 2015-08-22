@@ -47,6 +47,7 @@ angular.module('fantasyleagueApp')
           if ($scope.sortingOrder !== '') {
             $scope.filteredItems = $filter('orderBy')($scope.filteredItems, $scope.sortingOrder, $scope.reverse);
           }
+          $scope.currentPage = 0;
           // now group by pages
           $scope.groupToPages();
         };
