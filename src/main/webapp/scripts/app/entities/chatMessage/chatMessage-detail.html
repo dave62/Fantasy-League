@@ -1,0 +1,46 @@
+
+<div>
+    <h2><span>ChatMessage</span> {{chatMessage.id}}</h2>
+    <div class="table-responsive">
+        <table class="table table-striped">
+            <thead>
+            <tr>
+                <th>Field</th>
+                <th>Value</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr>
+                <td>
+                    <span>Content</span>
+                </td>
+                <td>
+                    <input type="text" class="input-sm form-control" value="{{chatMessage.content}}" readonly>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <span>Date</span>
+                </td>
+                <td>
+                    <input type="text" class="input-sm form-control" value="{{chatMessage.date}}" readonly>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <span>author</span>
+                </td>
+                <td>
+                    <input type="text" class="input-sm form-control" value="{{chatMessage.author.login}}" readonly>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <button type="submit"
+            ui-sref="chatMessage"
+            class="btn btn-info">
+        <span class="glyphicon glyphicon-arrow-left"></span>&nbsp;<span> Back</span>
+    </button>
+</div>

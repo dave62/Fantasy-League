@@ -11,5 +11,6 @@
 	<include file="classpath:config/liquibase/changelog/20150816223700_added_data_Player_and_Club.xml" relativeToChangelogFile="false"/>
 	<include file="classpath:config/liquibase/changelog/20150819200000_added_relation_Player_User.xml" relativeToChangelogFile="false"/>
 	
+    <include file="classpath:config/liquibase/changelog/20150823140347_added_entity_ChatMessage.xml" relativeToChangelogFile="false"/>
     <!-- JHipster will add liquibase changelogs here -->
 </databaseChangeLog>
