@@ -195,5 +195,9 @@ ul#strengthBar {
 	padding: 0px 15px 0px 15px;
 }
 
+p.chat-msg-content{
+	word-wrap: break-word;
+}
+
 
 
